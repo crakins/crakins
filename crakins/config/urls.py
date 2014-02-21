@@ -10,6 +10,12 @@ from django.views.generic import TemplateView
 from django.contrib import admin
 admin.autodiscover()
 
+# if settings.DEBUG:
+#     import debug_toolbar
+#     urlpatterns += patterns('',
+#         url(r'^__debug__/', include(debug_toolbar.urls)),
+#     )
+
 urlpatterns = patterns('',
     url(r'^$',
         TemplateView.as_view(template_name='pages/home.html'),
@@ -29,5 +35,6 @@ urlpatterns = patterns('',
     url(r'^avatar/', include('avatar.urls')),
 
     # Your stuff: custom urls go here
+
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

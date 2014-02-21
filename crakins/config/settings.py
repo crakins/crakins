@@ -48,6 +48,7 @@ class Common(Configuration):
         'south',  # Database migration helpers:
         'crispy_forms',  # Form layouts
         'avatar',  # for user avatars
+        #'gunicorn', # web server
     )
 
     # Apps specific for this project go here.
@@ -77,6 +78,7 @@ class Common(Configuration):
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
     )
     ########## END MIDDLEWARE CONFIGURATION
 
@@ -118,7 +120,7 @@ class Common(Configuration):
 
     ########## DATABASE CONFIGURATION
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
-    DATABASES = values.DatabaseURLValue('postgres://christopher:password@localhost/crakins')
+    DATABASES = values.DatabaseURLValue('postgres://crakins:1.kins.1@localhost/crakins')
     ########## END DATABASE CONFIGURATION
 
     ########## CACHING
@@ -272,7 +274,7 @@ class Common(Configuration):
 
 
     ########## Your common stuff: Below this line define 3rd party libary settings
-
+    DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
 class Local(Common):
 
@@ -393,3 +395,4 @@ class Production(Common):
     ########## END CACHING
 
     ########## Your production stuff: Below this line define 3rd party libary settings
+    DEBUG_TOOLBAR_PATCH_SETTINGS = False
